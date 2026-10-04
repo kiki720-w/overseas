@@ -1,0 +1,38 @@
+# Credentials and private runtime data
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.sqlite
+*.sqlite3
+*.db
+*.sqlite-*
+*.sqlite3-*
+*.db-*
+data/
+backups/
+evidence/
+knowledge-preparation/
+acceptance/
+*.log
+# Generated local environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+node_modules/
+.pytest_cache/
+.DS_Store
+Thumbs.db
+# Private reference documents and OCR
+*.pdf
+*.docx
+*ocr*.json
+*ocr*.txt
+
+# Private document deliverables
+deliverables/
+tmp*/
