@@ -1,0 +1,5 @@
+Coastal workspace imagery
+coast.jpg: aerial ocean waves and shore, Ismail Akcayir.
+Source: https://www.pexels.com/photo/aerial-view-of-ocean-waves-hitting-sandy-shore-35349602/
+License: Pexels License https://www.pexels.com/license/
+Reused from the user-provided local reference project. UI illustration only; not customer/company evidence or endorsement.

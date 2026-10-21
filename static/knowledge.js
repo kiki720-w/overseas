@@ -24,3 +24,5 @@ $('#review-form').onsubmit=e=>{e.preventDefault();work(async()=>{if(!reviewing||
 $('#retry-load').onclick=()=>work(initialize);
 window.addEventListener('error',()=>{$('#status').textContent='页面资源或脚本出现错误，请重新打开知识页。';$('#load-help').hidden=false;});
 work(initialize);
+
+(()=>{const entry=document.querySelector('#knowledge-import-entry');if(entry)entry.addEventListener('click',()=>{document.querySelector('#import-panel').open=true;});})();

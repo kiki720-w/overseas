@@ -35,17 +35,17 @@ class AnalysisHistory:
 
     def analysis_begin(self,cid,data,profile,mode):
         module,request_id=identity(data)
-        c,context,total,size,token=build_context(self,cid,data.get('knowledge_selections',[]))
-        scope={'knowledge_selections':data.get('knowledge_selections',[]),'knowledge':context.get('knowledge',[]),'customer_fields':CUSTOMER_FIELDS,'factory_fields':FACTORY_FIELDS,'record_fields':RECORD_FIELDS,'record_ids':[r['id'] for r in context['records']],'record_count':len(context['records']),'records_total':total,'input_bytes':size,'evidence_protocol':'catalog-v1','evidence_reference_count':len(context['evidence_catalog'])}
+        c,context,total,size,token=build_context(self,cid,data.get('knowledge_selections',[]),data.get('deal_question'))
+        scope={'deal_question':data.get('deal_question'),'knowledge_selections':data.get('knowledge_selections',[]),'knowledge':context.get('knowledge',[]),'customer_fields':CUSTOMER_FIELDS,'factory_fields':FACTORY_FIELDS,'record_fields':RECORD_FIELDS,'record_ids':[r['id'] for r in context['records']],'record_count':len(context['records']),'records_total':total,'input_bytes':size,'evidence_protocol':'catalog-v1','evidence_reference_count':len(context['evidence_catalog']),'evidence_provenance':context['evidence_provenance'],'supplier_capabilities':context['supplier_capabilities']}
         r=dict(id=secrets.token_hex(16),customer_id=cid,module=module,request_id=request_id,created_at=now(),completed_at='',status='pending',mode=mode,provider=profile['provider'],model=profile['model'],profile_revision=profile.get('revision',0),customer_version=c['version'],context_token=token,input_scope=scope,input_stage=c['stage'],input_blocker=c.get('blocker',''),result=None,error_code='',error_summary='',edited_draft=None,draft_version=0,draft_updated_at='')
         with self.db() as db:
             db.execute('BEGIN IMMEDIATE')
             old=db.execute('SELECT data FROM analyses WHERE customer_id=? AND module=? AND request_id=?',(cid,module,request_id)).fetchone()
             if old:
                 previous=json.loads(old[0])
-                if previous.get('input_scope',{}).get('knowledge_selections',[])!=data.get('knowledge_selections',[]):raise AppError('同一请求标识的知识范围不一致',409,'request_conflict')
+                if previous.get('input_scope',{}).get('deal_question')!=data.get('deal_question') or previous.get('input_scope',{}).get('knowledge_selections',[])!=data.get('knowledge_selections',[]):raise AppError('同一请求标识的知识范围不一致',409,'request_conflict')
                 return previous,False
-            if build_context(self,cid,data.get('knowledge_selections',[]))[4]!=token or data.get('context_token',token)!=token:raise AppError('输入已改变，请重新预览',409,'context_changed')
+            if build_context(self,cid,data.get('knowledge_selections',[]),data.get('deal_question'))[4]!=token or data.get('context_token',token)!=token:raise AppError('输入已改变，请重新预览',409,'context_changed')
             db.execute('INSERT INTO analyses VALUES(?,?,?,?,?)',(r['id'],cid,module,request_id,dump(r)))
         return r,True
 
@@ -53,20 +53,29 @@ class AnalysisHistory:
         # Explicit allowlist: reject raw provider envelopes, hidden reasoning and secrets.
         keys=('match','angle','next_step','draft','unknowns','stage_blocker','notice','facts','hypotheses','questions')
         r=dict(r,status='failed' if error else 'ok',completed_at=now(),result={k:result.get(k,[] if k in ('facts','hypotheses','questions') else '') for k in keys} if result is not None and not error else None,error_code=error.code if error else '',error_summary=ERRORS.get(error.code,'请求未完成或供应商拒绝响应；未保存生成正文。') if error else '')
+        from .analysis_contract import public_issue
+        output_issue=public_issue(getattr(error,'output_issue',None))
+        if output_issue:r['output_issue']=output_issue
+        from .analysis_contract import public_adaptation
+        adaptation=public_adaptation(result.get('contract_adaptation')) if isinstance(result,dict) else public_adaptation(getattr(error,'contract_adaptation',None))
+        if adaptation:r['contract_adaptation']=adaptation
+        from .reply_quality import public_outreach_review
+        quality=public_outreach_review(result.get('draft_quality')) if isinstance(result,dict) and not error else None
+        if quality:r['draft_quality']=quality
         issue=getattr(error,'validation_issue',None)
         if error and isinstance(issue,dict) and issue.get('reason') in EVIDENCE_REASONS and all(type(issue.get(k)) is int and 0<=issue[k]<12 for k in ('fact_index','reference_index')):
             r['validation_issue']={k:issue[k] for k in ('reason','fact_index','reference_index')}
             r['error_summary']+='原因：'+EVIDENCE_REASONS[issue['reason']]+f"（第{issue['fact_index']+1}项事实 / 第{issue['reference_index']+1}个引用）。"
         with self.db() as db:
             db.execute('BEGIN IMMEDIATE')
-            try:r['historical_at_completion']=build_context(self,r['customer_id'],r.get('input_scope',{}).get('knowledge_selections',[]))[4]!=r['context_token']
+            try:r['historical_at_completion']=build_context(self,r['customer_id'],r.get('input_scope',{}).get('knowledge_selections',[]),r.get('input_scope',{}).get('deal_question'))[4]!=r['context_token']
             except AppError:r['historical_at_completion']=True
             db.execute('UPDATE analyses SET data=? WHERE id=? AND customer_id=? AND module=?',(dump(r),r['id'],r['customer_id'],r['module']))
         return r
 
     def analysis_view(self,r,token=None):
         if token is None:
-            try:token=build_context(self,r['customer_id'],r.get('input_scope',{}).get('knowledge_selections',[]))[4]
+            try:token=build_context(self,r['customer_id'],r.get('input_scope',{}).get('knowledge_selections',[]),r.get('input_scope',{}).get('deal_question'))[4]
             except AppError:token=''
         return dict(r,historical=token!=r['context_token'],unsent=True)
 
@@ -102,4 +111,7 @@ class AnalysisHistory:
 def replay(r):
     if r['status']=='pending':raise AppError('该次请求尚未确认完成，请刷新分析历史；不会重复调用供应商',409,'analysis_pending')
     if r['status']=='failed':raise AppError(r['error_summary'],502,r['error_code'])
-    return dict(r['result'],mode=r['mode'],provider=r['provider'],model=r['model'],revision=r['profile_revision'],customer_id=r['customer_id'],customer_version=r['customer_version'],context_token=r['context_token'],analysis_id=r['id'],module=r['module'])
+    result=dict(r['result'],mode=r['mode'],provider=r['provider'],model=r['model'],revision=r['profile_revision'],customer_id=r['customer_id'],customer_version=r['customer_version'],context_token=r['context_token'],analysis_id=r['id'],module=r['module'])
+    if r.get('contract_adaptation'):result['contract_adaptation']=r['contract_adaptation']
+    if r.get('draft_quality'):result['draft_quality']=r['draft_quality']
+    return result

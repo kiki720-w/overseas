@@ -4,7 +4,7 @@ import json
 import math
 import unicodedata
 
-TYPES=['终端加工厂','机床厂家','经销商']
+TYPES=['终端加工厂','机床厂家','经销商','设备集成商']
 STAGES=['待开发','已联系','需求确认','报价沟通','样品验证','商务谈判','成交','暂缓']
 KINDS=['沟通','报价','反馈','跟进']
 class AppError(Exception):

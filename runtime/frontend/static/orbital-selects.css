@@ -1,0 +1,8 @@
+/* Native selects in the approved research workflow; custom country combo is untouched. */
+.orbital-page .orbital-workflow select,.orbital-page .orbital-detail select{color-scheme:dark;background-color:#151c29;color:#f6f7fc;border:1px solid #434f64;border-radius:8px;font:inherit;min-height:44px;padding:10px 12px}
+.orbital-page select option,.orbital-page select optgroup,body.orbital-workspace select option,body.orbital-workspace select optgroup{background:#151c29;color:#f6f7fc}
+.orbital-page select:disabled,body.orbital-workspace select:disabled{background-color:#101722;color:#aab3c7;opacity:.65;cursor:not-allowed}
+.orbital-page select:focus-visible{outline:2px solid #ddc3ff;outline-offset:3px}
+.orbital-page select option:checked{background:#463065;color:#fff}
+.orbital-page .orbital-workflow summary,.orbital-page .orbital-workflow label,.orbital-page .orbital-workflow p{color:#b9c4da}
+.orbital-page .orbital-workflow h2,.orbital-page .orbital-workflow h3{color:#ececff}

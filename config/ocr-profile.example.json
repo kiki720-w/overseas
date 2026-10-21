@@ -1,0 +1,8 @@
+{
+  "protocol": "local-ocr-production-v2",
+  "component_root": "../components/ocr",
+  "runtime_root": "./runtime",
+  "python": "./python.exe",
+  "models_root": "./models",
+  "staging": "./tasks/ocr"
+}

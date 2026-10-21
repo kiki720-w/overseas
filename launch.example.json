@@ -1,0 +1,6 @@
+{
+  "protocol": "overseas-launch-v1",
+  "workspace": "./workspace",
+  "port": 8878,
+  "website_extraction": "native"
+}

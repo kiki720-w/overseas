@@ -12,6 +12,7 @@ import threading
 import time
 from pathlib import Path
 from .common import AppError, dump, field, norm, now, paging, page_result
+from .worker_entry import command as worker_command
 
 CATEGORIES=['product','capability','certification','case','sales_rule']
 REVIEW_LABELS={'unverified':'需核实','source_checked':'已核对原文（企业自述）','confirmed':'用户确认（非独立证明）','rejected':'拒绝用于分析'}
@@ -109,6 +110,7 @@ class KnowledgeStore:
             for d in docs:
                 if not d['enabled'] or d['review_status']=='rejected' or (category and category!=d['category']) or (review and review!=d['review_status']):continue
                 d=self.knowledge_warnings(d,docs)
+                if d['expired']:continue  # Keep expired documents browsable, exclude them from recall.
                 for row in db.execute('SELECT data FROM kb_chunks WHERE document_id=? AND version=?',(d['id'],d['version'])):
                     c=json.loads(row[0]);hay=norm(d['title']+' '+d['filename']+' '+c['text'])
                     if all(t in hay for t in tokens):items.append(dict(c,document_id=d['id'],version=d['version'],title=d['title'],filename=d['filename'],category=d['category'],source_company=d.get('source_company',''),review_status=d['review_status'],review_label=d['review_label'],review_info=d.get('review_info'),independently_proven=False,expired=d['expired'],conflict=d['conflict'],revision=d['revision'],warnings=d['warnings'],score=sum(hay.count(t) for t in tokens)))
@@ -154,7 +156,7 @@ class KnowledgeService:
         if not raw or len(raw)>5*1024*1024:raise AppError('文件应为1字节至5MiB')
         if not self.workers.acquire(blocking=False):raise AppError('解析任务繁忙，请稍后重试',429,'busy')
         try:
-            result=subprocess.run([sys.executable,'-I',str(Path(__file__).with_name('knowledge_extract.py'))],input=dump({'content_base64':base64.b64encode(raw).decode(),'extension':'.'+extension}).encode(),stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=15,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+            result=subprocess.run(worker_command('knowledge-extract'),input=dump({'content_base64':base64.b64encode(raw).decode(),'extension':'.'+extension}).encode(),stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=15,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
             if result.returncode or len(result.stdout)>2*1024*1024:raise AppError('解析失败或超出安全限额')
             parsed=json.loads(result.stdout.decode('utf-8'))
             if not parsed.get('ok'):raise AppError(parsed.get('message','文档解析失败'),400,parsed.get('code','invalid_document'))

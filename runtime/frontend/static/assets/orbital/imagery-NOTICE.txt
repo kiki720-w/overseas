@@ -1,0 +1,24 @@
+NASA imagery notice
+
+This revision replaces the previous Three.js example textures, whose original imagery provenance had not been verified, with unmodified downloads from NASA's official Earth Observatory image archive. No prior Three.js day/night/cloud/normal texture is included in the revised production bundle.
+
+Earth day: NASA/GSFC Blue Marble, land/ocean/ice/clouds, 2002.
+Cloud map: NASA/GSFC Blue Marble Clouds, 2002.
+Blue Marble data credit: Reto Stockli, NASA/Goddard Space Flight Center.
+Official source explanation and permission statement:
+https://science.nasa.gov/blogs/earth-matters/2011/10/06/crafting-the-blue-marble/
+Official data credit:
+https://svs.gsfc.nasa.gov/2865/
+
+Night lights: NASA Earth Observatory, Earth's City Lights 1994–1995; DMSP Operational Linescan System / NOAA data.
+Data providers: Marc Imhoff (NASA GSFC) and Christopher Elvidge (NOAA NGDC).
+Image: Craig Mayhew and Robert Simmon (NASA GSFC).
+Source product explanation:
+https://science.nasa.gov/earth/earth-observatory/earths-city-lights-1994-896/
+
+Exact official download URLs, file hashes and byte counts: imagery-provenance.json.
+NASA media usage guidelines (not an MIT license):
+https://www.nasa.gov/nasa-brand-center/images-and-media/
+Credit NASA and the named data providers. These images are used as geographic visualization; they are not live satellite data, business evidence or a NASA endorsement. NASA marks are not used.
+
+No downloaded image file is resized, recolored or re-encoded. The WebGL display shader applies a muted blue tint and a city-light luminance mask to preserve the selected visual treatment. The globe geometry, atmosphere and country markers are application rendering, not modifications to the source files.

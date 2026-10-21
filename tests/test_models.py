@@ -16,7 +16,7 @@ from backend.models import ModelService
 from backend.model_transport import normalize_endpoint, public_addresses, HTTPSJSONTransport, provider_error
 from backend.model_analysis import validate_analysis, INSTRUCTION
 
-SYNTHETIC_KEY='sk-SYNTHETIC-only-not-a-real-key'
+SYNTHETIC_KEY='synthetic-fixture-credential-only'
 def resolver(host,port,**kwargs):return [(socket.AF_INET,socket.SOCK_STREAM,6,'',('93.184.216.34',443))]
 def output(**changes):
     value={'match':'品类需核实','angle':'请确认机床接口','next_step':'先确认加工规格','draft':'Subject: Clarifying requirements\nHello, could you share the machine interface?','unknowns':'数量未知','stage_blocker':'规格待确认','notice':'待审核','facts':[],'hypotheses':['可能需要夹具，尚未核实'],'questions':['需要什么接口？']}

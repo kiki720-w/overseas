@@ -1,0 +1,39 @@
+{
+  "assets": [
+    {
+      "file": "<local-generation-reference-omitted>",
+      "tool": "built-in ImageGen",
+      "reference": "<local-generation-reference-omitted>",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "bytes": 823236,
+      "sha256": "7c04d9d8e505f7ec51b1ecbbda416d9040ef8f01b59743ab656fe2fa591fd759",
+      "unmodified_generated_pixels": true,
+      "visual_inspection": "passed",
+      "date": "2026-10-05",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "<local-generation-reference-omitted>",
+      "tool": "built-in ImageGen",
+      "reference": "<local-generation-reference-omitted>",
+      "dimensions": [
+        1681,
+        936
+      ],
+      "mode": "RGB",
+      "bytes": 1268114,
+      "sha256": "76320882cfc355f3c2bbc5061d58b76258f3977a5c836eb02a1025ba2388b3b2",
+      "unmodified_generated_pixels": true,
+      "visual_inspection": "passed",
+      "date": "2026-10-05"
+    }
+  ],
+  "note": "Native ImageGen canvas sizes differ from requested display sizes. Use CSS sizing; originals preserved."
+}

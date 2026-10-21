@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
+*.xlsx binary
+templates/*.csv -text
+static/assets/orbital/countries-LICENSE.txt -whitespace
+runtime/frontend/static/assets/orbital/countries-LICENSE.txt -whitespace

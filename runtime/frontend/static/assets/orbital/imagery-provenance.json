@@ -1,0 +1,35 @@
+[
+  {
+    "file": "earth-day-nasa.jpg",
+    "source": "https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57735/land_ocean_ice_cloud_2048.jpg",
+    "sha256": "fb67ac030214c1891994c8f976e7f6c9cd5b0f21586aba8567250781a4fe708e",
+    "bytes": 593729,
+    "unmodified_download": true,
+    "credit": "NASA/Goddard Space Flight Center. Blue Marble data: Reto Stockli (NASA/GSFC).",
+    "usage_guidelines": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "modifications": "None to downloaded file. Globe shader applies display color and city-light mask only.",
+    "source_information": "https://science.nasa.gov/blogs/earth-matters/2011/10/06/crafting-the-blue-marble/"
+  },
+  {
+    "file": "earth-clouds-nasa.jpg",
+    "source": "https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57747/cloud_combined_2048.jpg",
+    "sha256": "daddaad84d7a33bbbc86cdda3f591099f57cee8607b7bcf3b67eb7e4f7a1c793",
+    "bytes": 829367,
+    "unmodified_download": true,
+    "credit": "NASA/Goddard Space Flight Center. Blue Marble data: Reto Stockli (NASA/GSFC).",
+    "usage_guidelines": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "modifications": "None to downloaded file. Globe shader applies display color and city-light mask only.",
+    "source_information": "https://science.nasa.gov/blogs/earth-matters/2011/10/06/crafting-the-blue-marble/"
+  },
+  {
+    "file": "earth-night-nasa.jpg",
+    "source": "https://eoimages.gsfc.nasa.gov/images/imagerecords/55000/55167/earth_lights_lrg.jpg",
+    "sha256": "2e38950e8d135a74dce5e5267894fbc6c697e891496a25e1f5c0aeff67ac6a30",
+    "bytes": 547269,
+    "unmodified_download": true,
+    "credit": "Data: Marc Imhoff (NASA GSFC) and Christopher Elvidge (NOAA NGDC). Image: Craig Mayhew and Robert Simmon (NASA GSFC).",
+    "usage_guidelines": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "modifications": "None to downloaded file. Globe shader applies display color and city-light mask only.",
+    "source_information": "https://science.nasa.gov/earth/earth-observatory/earths-city-lights-1994-896/"
+  }
+]

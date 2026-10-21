@@ -1,0 +1,23 @@
+{
+  "pipeline": "local_bm25_dense_rrf_rerank",
+  "corpus_schema": "cleaned-v2-candidate",
+  "candidate_k": 20,
+  "final_k": 6,
+  "dense_min_cosine": 0.7,
+  "rrf_constant": 60,
+  "rerank_logit_gate": null,
+  "cpu_threads": 2,
+  "batch_size": 4,
+  "max_tokens": 512,
+  "embedding_dir": "",
+  "rerank_dir": "",
+  "query_max_chars": 200,
+  "candidate_only": false,
+  "positive_answer_decision": "source_bounded",
+  "human_boundary_verdict": "pending",
+  "minimum_start_ram_mib": 1500,
+  "minimum_running_ram_mib": 500,
+  "canonical_scope": "isolated_migration_copy",
+  "cloud_send_consent": false,
+  "gate_protocol": "evidence-gate-next-v1-isolated-canonical"
+}

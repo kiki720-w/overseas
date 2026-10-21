@@ -52,9 +52,14 @@ class ImageTests(unittest.TestCase):
             self.error('/assets/'+name,404)
         for route in ('/assets/nav-deals.svg','/assets/compass.webp','/assets/precision-fixture.PNG','/assets/subdir/row-arrow.png','/assets/../nav-settings.png','/assets/%2e%2e/nav-settings.png'):
             self.error(route,404)
-    def test_csp_only_adds_self_image_directive(self):
+    def test_csp_only_allows_self_and_pinned_first_frame_style(self):
         with urllib.request.urlopen(self.base+'/') as r:csp=r.headers['Content-Security-Policy']
-        self.assertEqual(csp,"default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; object-src 'none'; frame-ancestors 'none'")
+        self.assertEqual(csp,"default-src 'self'; img-src 'self'; script-src 'self'; style-src 'self' 'sha256-5Vse2j0ZboZatsJhGN/Cmj7bbfsydejMwb18WsOu1kE='; connect-src 'self'; object-src 'none'; frame-ancestors 'none'")
+        # Pin the permitted style to its actual approved source bytes, not a wildcard.
+        import re,hashlib,base64
+        page=Path(server.__file__).resolve().parent/'runtime/frontend/static/research.html'
+        style=re.search(r'<style id="orbital-first-frame">(.*?)</style>',page.read_text(encoding='utf8'),re.S).group(1)
+        self.assertEqual(base64.b64encode(hashlib.sha256(style.encode()).digest()).decode(),'5Vse2j0ZboZatsJhGN/Cmj7bbfsydejMwb18WsOu1kE=')
         for forbidden in ('data:','blob:','unsafe-inline','unsafe-eval','https:'):self.assertNotIn(forbidden,csp)
     def test_traversal_arbitrary_files_encodings_and_types_unavailable(self):
         for route in ['/assets/../server.py','/assets/%2e%2e/server.py','/assets/%252e%252e/server.py','/assets/..%5cserver.py','/assets/silver-route-map.png/..','/assets/%73ilver-route-map.png','/assets/SILVER-ROUTE-MAP.png','/assets/.env','/assets/other.png','/assets/silver-route-map.svg','/static/assets/silver-route-map.png','/assets/']:

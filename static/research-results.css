@@ -1,0 +1,72 @@
+.results-page .results-conditions,.results-page .results-search-actions,.results-page .results-filter{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.results-page .results-search-actions .note{flex-basis:100%;margin:0}.results-page .results-filter label{flex:1;min-width:170px}.results-page .results-search-progress{padding:16px 0;border-top:1px solid var(--line,#dbe4ef);border-bottom:1px solid var(--line,#dbe4ef);margin:16px 0}
+.results-page .results-plan-details,.results-page #results-condition-editor{margin:16px 0}.results-page .candidate-row{display:flex;gap:14px;align-items:center;width:100%;text-align:left;padding:16px 12px;border-bottom:1px solid var(--line,#dbe4ef);background:transparent;color:inherit}.results-page .candidate-name{flex:1;min-width:0;overflow-wrap:anywhere}.results-page .candidate-name small{display:block;font-weight:400;margin-top:5px}.results-page .candidate-ordinal{font-size:12px}.results-page .candidate-monogram{display:none}.results-page .candidate-location{min-width:95px}.results-page .candidate-status{display:flex;gap:6px}.results-page .candidate-relevance{max-width:180px;font-size:12px}.results-page .candidate-view{white-space:nowrap;font-size:12px}.results-page .candidate-view img,.results-page .candidate-location img{width:16px;height:16px;vertical-align:middle}.results-page .candidate-pool{min-width:0}.results-page .discovery-steps{display:none}
+.orbital-page .home-results-note{font-size:12px;color:#b8c1d4;margin:16px 0}.orbital-page .candidate-row[href]{text-decoration:none}.orbital-page .candidate-row[href] .candidate-name{grid-column:3/5}.orbital-page .candidate-row[href] .candidate-status{grid-column:6}.orbital-page .candidate-row[href] .candidate-view{grid-column:7}
+@media(max-width:700px){.results-page .candidate-row{flex-wrap:wrap}.results-page .candidate-name{flex-basis:75%}.results-page .candidate-relevance{max-width:none}.results-page .results-filter label{flex-basis:100%}.orbital-page .candidate-row[href] .candidate-name{grid-column:2/5}.orbital-page .candidate-row[href] .candidate-status{grid-column:2/3}.orbital-page .candidate-row[href] .candidate-view{grid-column:3/5}}
+
+.orbital-page .home-search-note{font-size:12px;line-height:1.5;color:#b8c1d4;margin:12px 0 0;max-width:500px}.results-page .results-tools{margin:24px 0}.results-page .results-tools>summary{margin-bottom:16px}
+@media(max-width:700px){.orbital-page .candidate-row[href]{grid-template-columns:34px 1fr auto;grid-template-rows:auto auto;gap:10px 12px}.orbital-page .candidate-row[href] .candidate-name{grid-column:2/4;grid-row:1;overflow-wrap:anywhere}.orbital-page .candidate-row[href] .candidate-monogram{grid-column:1;grid-row:1/3}.orbital-page .candidate-row[href] .candidate-status{grid-column:2;grid-row:2;position:static;font-size:12px}.orbital-page .candidate-row[href] .candidate-view{grid-column:3;grid-row:2;position:static;font-size:12px}}
+
+.orbital-page .orbital-advanced select{color-scheme:dark;background:#151c29;color:#f6f7fc;border:1px solid #434f64;border-radius:8px;min-height:44px;padding:10px 12px}
+
+.results-page.orbital-workspace .results-search-progress,.results-page.orbital-workspace .candidate-row{border-color:var(--ws-border)}
+
+.results-page.orbital-workspace .candidate-row{background:transparent;color:#dbe4f6;border:0;border-bottom:1px solid var(--ws-border);border-radius:0;font-weight:400}.results-page.orbital-workspace .source,.results-page.orbital-workspace #candidate-search-source,.results-page.orbital-workspace .candidate-research-panel,.results-page.orbital-workspace .quote{background:#111925;color:#d2daeb;border-color:var(--ws-border)}.results-page.orbital-workspace .stamp{color:#aab3c7}.results-page .results-filter-details{margin:12px 0}.results-page .results-filter-details .results-filter{margin-top:16px}
+
+.results-page.orbital-workspace .candidate-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;background:#111925!important;color:#dbe4f6!important;border:1px solid var(--ws-border)!important;border-radius:10px;padding:14px!important}.results-page.orbital-workspace .candidate-row.active{background:#1b2340!important;border-color:#8077dd!important}.results-page .candidate-name{grid-column:1/-1;width:100%;font-size:14px;line-height:1.5}.results-page .candidate-ordinal,.results-page .candidate-monogram,.results-page .candidate-relevance{display:none}.results-page .candidate-location{min-width:0;font-size:12px}.results-page .candidate-status{justify-self:end;font-size:12px}.results-page .candidate-view{grid-column:1/-1;font-size:12px}.results-page.orbital-workspace #candidate-batch-summary{background:#111925!important;color:#bac9e2!important;border-color:var(--ws-border)!important}
+
+/* Full results use compact rows; the four-company showcase stays unchanged. */
+body.results-page.orbital-workspace .discovery-layout{display:block}
+body.results-page.orbital-workspace .candidate-pool{width:100%;padding:20px 24px}
+body.results-page.orbital-workspace #candidate-list{display:grid;gap:0}
+body.results-page.orbital-workspace .candidate-row{grid-template-columns:minmax(0,1fr) 135px 130px 92px;grid-template-rows:auto auto;gap:4px 16px;padding:12px 0!important;border:0!important;border-bottom:1px solid #354257!important;border-radius:0;min-height:76px;align-items:center;background:transparent!important}
+body.results-page.orbital-workspace .candidate-row .candidate-name{grid-column:1;grid-row:1;line-height:1.6;width:auto;font-size:14px;overflow-wrap:anywhere;min-width:0}
+body.results-page.orbital-workspace .candidate-row .candidate-name small{font-size:12px;color:#8c9db6;white-space:normal;overflow-wrap:anywhere;font-weight:400;margin-top:3px}
+body.results-page.orbital-workspace .candidate-row .candidate-location{grid-column:2;grid-row:1;align-self:center;font-size:12px;overflow-wrap:anywhere}
+body.results-page.orbital-workspace .candidate-row .candidate-status{grid-column:3;grid-row:1;justify-self:start;font-size:12px;flex-wrap:wrap}
+body.results-page.orbital-workspace .candidate-row .candidate-view{grid-column:4;grid-row:1;justify-self:end;font-size:12px;color:#d7bcff}
+body.results-page.orbital-workspace .candidate-row .candidate-relevance{display:block;grid-column:1/4;grid-row:2;max-width:none;font-size:12px;color:#aab3c7;line-height:1.6;overflow-wrap:anywhere}
+body.results-page.orbital-workspace .candidate-row.active{background:#8954ff12!important}
+body.results-page.orbital-workspace #candidate-detail{margin-top:20px;padding:24px;min-width:0;overflow-wrap:anywhere}
+body.results-page.orbital-workspace #candidate-detail[hidden]{display:none!important}
+body.results-page.orbital-workspace #candidate-detail .results-close-detail{margin-bottom:18px}
+body.results-page.orbital-workspace .results-tools{border:0;border-top:1px solid #354257;border-radius:0;padding:18px 0;background:transparent;box-shadow:none}
+body.results-page.orbital-workspace .results-tools .panel{border:0;border-top:1px solid #354257;border-radius:0;background:transparent;padding:18px 0;box-shadow:none}
+body.results-page.orbital-workspace .results-tools .panel .panel{border-top:0;padding:12px 0}
+@media(max-width:720px){body.results-page.orbital-workspace .candidate-pool,body.results-page.orbital-workspace #candidate-detail{padding:18px 14px}body.results-page.orbital-workspace .candidate-row{grid-template-columns:minmax(0,1fr) auto;gap:6px 10px}body.results-page.orbital-workspace .candidate-row .candidate-name{grid-column:1/-1;grid-row:1}body.results-page.orbital-workspace .candidate-row .candidate-location{grid-column:1;grid-row:2}body.results-page.orbital-workspace .candidate-row .candidate-status{grid-column:2;grid-row:2;justify-self:end}body.results-page.orbital-workspace .candidate-row .candidate-relevance{grid-column:1/-1;grid-row:3}body.results-page.orbital-workspace .candidate-row .candidate-view{grid-column:1/-1;grid-row:4;justify-self:start}body.results-page.orbital-workspace .results-filter label{min-width:0}}
+
+body.results-page.orbital-workspace .candidate-title-text{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}body.results-page.orbital-workspace .candidate-row .candidate-name small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}body.results-page.orbital-workspace .candidate-row .candidate-relevance{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+
+body.results-page.orbital-workspace .candidate-row{margin:0!important}body.results-page.orbital-workspace .candidate-row .orb-icon{filter:brightness(0) invert(.85)}
+
+/* Candidate detail is one readable surface; provenance remains inspectable. */
+.orbital-page .orbital-candidates{position:relative;z-index:3}
+body.results-page.orbital-workspace #candidate-detail .candidate-overview{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:18px 0}
+body.results-page.orbital-workspace #candidate-detail h3{margin:14px 0 8px;color:#ece7ff;font-size:16px}
+body.results-page.orbital-workspace #candidate-detail p{overflow-wrap:anywhere;line-height:1.7}
+body.results-page.orbital-workspace #candidate-detail .candidate-evidence-details{margin:24px 0;padding:16px 0;border:0;border-top:1px solid #354257;border-bottom:1px solid #354257;background:transparent;color:#d9dfed}
+body.results-page.orbital-workspace #candidate-detail summary{cursor:pointer;color:#d9c3ff;overflow-wrap:anywhere}
+body.results-page.orbital-workspace #candidate-detail .source,body.results-page.orbital-workspace #candidate-detail .source-provenance,body.results-page.orbital-workspace #candidate-detail .warning,body.results-page.orbital-workspace #candidate-search-source,body.results-page.orbital-workspace #candidate-identity-review{background:#111925;color:#d2daeb;border-color:#3d3554}
+body.results-page.orbital-workspace #candidate-detail .evidence-page{background:transparent;border:0;border-top:1px solid #354257;margin-top:20px;padding:18px 0}
+body.results-page.orbital-workspace #candidate-detail .evidence-page>h4{color:#eee7ff;overflow-wrap:anywhere}
+body.results-page.orbital-workspace #candidate-detail .evidence-paragraph{margin:16px 0;padding:0;background:transparent;border:0}
+body.results-page.orbital-workspace #candidate-detail .evidence-paragraph>span{font-size:12px;color:#aab3c7}
+body.results-page.orbital-workspace #candidate-detail .quote{border-left-color:#8f69ce;color:#d2daeb;background:transparent;word-break:break-word}
+body.results-page.orbital-workspace #candidate-detail .evidence-quote{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+body.results-page.orbital-workspace #candidate-detail .evidence-quote.expanded{display:block;overflow:visible}
+body.results-page.orbital-workspace #candidate-detail .source-provenance{padding:8px 0;border:0;margin:8px 0;background:transparent;font-size:12px}
+body.results-page.orbital-workspace #candidate-detail .source-provenance .warning{padding:8px;background:#211b2b}
+body.results-page.orbital-workspace #candidate-detail .evidence-expand{min-height:32px;padding:4px 10px;font-size:12px;margin:4px 0}
+body.results-page.orbital-workspace #candidate-identity-review{min-width:0;border:1px solid #3d3554;border-radius:9px;padding:18px;margin:20px 0}
+body.results-page.orbital-workspace #candidate-identity-review legend{color:#ded0ff;padding:0 6px}
+body.results-page.orbital-workspace #candidate-identity-review label{display:block;margin:12px 0;overflow-wrap:anywhere}
+body.results-page.orbital-workspace #candidate-identity-review label.inline{display:flex}
+body.results-page.orbital-workspace #candidate-identity-basis{width:100%;max-width:100%;resize:vertical}
+body.results-page.orbital-workspace #candidate-confirm-form{margin:24px 0 0;padding-top:12px}
+body.results-page.orbital-workspace #candidate-confirm-form .detail-primary-actions{display:flex;position:static;flex-wrap:wrap;gap:12px;margin:18px 0 0;padding:0}
+body.results-page.orbital-workspace #candidate-detail #candidate-manage{display:flex;position:static;flex-wrap:wrap;gap:12px;margin-top:24px;padding-top:20px;border-top:1px solid #354257;clear:both}
+body.results-page.orbital-workspace #candidate-detail #candidate-reject{background:transparent;border-color:#805568;color:#efb7ca}
+body.results-page.orbital-workspace #candidate-detail button{white-space:normal;max-width:100%}
+@media(max-width:720px){body.results-page.orbital-workspace #candidate-detail .candidate-overview{grid-template-columns:1fr;gap:8px}body.results-page.orbital-workspace #candidate-confirm-form .detail-primary-actions>button{width:100%}body.results-page.orbital-workspace #candidate-detail #candidate-manage>button{flex:1 1 130px}body.results-page.orbital-workspace #candidate-identity-review{padding:14px}}
+
+.source-evidence-summary{grid-column:1/-1;border-top:1px solid #cbd7d2;padding-top:12px}.source-evidence-summary blockquote{margin:12px 0;padding:0 12px;border-left:2px solid #94b3b4}.source-evidence-summary a,.source-evidence-summary p{overflow-wrap:anywhere}.source-role-label{display:block;margin-top:6px;color:#3c6269}.review-source-action{margin-top:8px}

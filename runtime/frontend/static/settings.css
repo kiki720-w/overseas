@@ -1,0 +1,87 @@
+/* Embedded model connection only. Search composition and its existing controls are unchanged. */
+#model-entry{position:relative;width:285px;max-width:100%;margin:0 0 12px;pointer-events:auto}
+.orbital-page #edit-model{display:flex;align-items:center;gap:9px;width:100%;height:40px;max-width:100%;padding:8px 16px;border:0;border-radius:15px;background:var(--orb-gradient);color:white;font:500 14px/24px 'Segoe UI','Microsoft YaHei UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 26px #793af82c}
+.orbital-page #edit-model:hover{filter:brightness(1.09)}
+.orbital-page #edit-model[aria-expanded=true]{outline:2px solid #ddc3ff;outline-offset:3px}
+.orbital-page .hero-description{margin-bottom:12px}
+.orbital-page #hero-form-slot .orbital-primary-wrap{margin-top:20px;max-width:100%}
+.orbital-page #hero-form-slot .orbital-advanced{margin-top:12px}
+#edit-model .model-entry-caption{color:#f4ecff;font-size:12px;flex:none}
+#edit-model #current-model{font-size:14px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;flex:1;text-align:left}
+#edit-model #settings-state{font-size:11px;color:#f4ecff;white-space:nowrap;flex:none}
+#edit-model #settings-state[data-state=error]{color:#fff1cf}
+#edit-model #settings-state[data-state=ready]{color:#edfff7}
+#edit-model #settings-state[data-state=unsaved]{color:#fff1cf}
+#edit-model .orb-icon{width:16px;height:16px;filter:brightness(0) invert(1)}
+#model-editor{display:none;position:fixed;inset:auto;margin:0;box-sizing:border-box;width:420px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 24px);padding:0;border:1px solid #46516a;border-radius:11px;background:#0c131c;color:#d2daeb;box-shadow:0 20px 65px #0009;overflow:auto;overscroll-behavior:contain;z-index:2147483000;font:400 13px/1.6 'Segoe UI','Microsoft YaHei UI','Microsoft YaHei',sans-serif;color-scheme:dark}
+#model-editor:popover-open,#model-editor.is-open{display:block}
+#model-editor::backdrop{background:transparent;pointer-events:none}
+#model-editor [hidden]{display:none!important}
+#model-editor *{box-sizing:border-box}
+#model-editor .model-editor-header{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;background:#0c131c;border-bottom:1px solid #273441}
+#model-editor #model-editor-title{font:600 15px/22px 'Segoe UI','Microsoft YaHei UI',sans-serif;margin:0;color:#f6f7fc}
+#model-editor .editor-header-actions{display:flex;gap:6px;flex:none}
+#model-editor button{font:400 12px/20px 'Segoe UI','Microsoft YaHei UI',sans-serif;border:1px solid #5c477b;border-radius:7px;min-height:32px;padding:5px 10px;background:#7548cc;color:white;cursor:pointer;box-shadow:none}
+#model-editor button.secondary{background:transparent;border-color:#404b60;color:#c5b1e8}
+#model-editor button:disabled{opacity:.5;cursor:not-allowed}
+#model-editor .editor-header-actions button{padding:4px 7px;min-height:28px;font-size:11px;border:0}
+#model-editor .model-editor-body{padding:14px 16px 16px}
+#model-editor .connection-panel{padding:0;border:0;background:transparent;box-shadow:none;border-radius:0;margin:0}
+#model-editor .model-scope-note{margin:0 0 14px;color:#aab3c7;font-size:11px}
+#model-editor .step-heading{display:flex;align-items:center;gap:8px;margin:0 0 7px}
+#model-editor .step-heading h2{font:500 12px/20px 'Segoe UI','Microsoft YaHei UI',sans-serif;color:#c9d0df;margin:0}
+#model-editor .step-heading .tag{margin-left:auto;border:0;background:transparent;color:#aab3c7;padding:0;font-size:11px}
+#model-editor .setup-step+.setup-step{margin-top:16px;padding:0;border:0}
+#model-editor label{display:block;margin:0;color:#c9d0df;font:400 12px/20px 'Segoe UI','Microsoft YaHei UI',sans-serif}
+#model-editor input:not([type=checkbox]){width:100%;height:38px;min-height:38px;border:1px solid #434f64;border-radius:7px;padding:7px 10px;background:#151c29;color:#f6f7fc;font:400 13px/22px 'Segoe UI','Microsoft YaHei UI',sans-serif;min-width:0;box-shadow:none}
+#model-editor input:disabled{color:#97a5ba;background:#101722;cursor:not-allowed}
+#model-editor input::placeholder{color:#8896ac}
+#model-editor .key-step>label>span:first-child{display:none}
+#model-editor p{font-size:12px;line-height:1.65;color:#aab3c7;margin:6px 0;overflow-wrap:anywhere}
+#model-editor :is(.muted,#key-help){display:block;margin-top:6px;font-size:11px;line-height:1.6;color:#aab3c7}
+#model-editor .model-hint{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-top:6px}
+#model-editor .model-hint p{margin:0;font-size:11px}
+#model-editor a{color:#c5b1e8;font-size:11px}
+#model-editor #catalog-note{font-size:11px}
+#model-editor .model-picker{position:relative}
+#model-editor #model-search{padding-right:30px;cursor:pointer}
+#model-editor .model-chevron{position:absolute;right:10px;top:8px;color:#c5b1e8;pointer-events:none}
+#model-editor .model-options{position:absolute;left:0;right:0;top:calc(100% + 5px);z-index:15;max-height:220px;overflow:auto;overscroll-behavior:contain;scroll-padding:5px;background:#151c29;border:1px solid #46516a;border-radius:8px;box-shadow:0 12px 30px #0009;padding:5px}
+#model-editor .model-option-group{font-size:11px;color:#aab3c7;padding:7px 8px 3px}
+#model-editor .model-option{padding:8px;border-radius:5px;font-size:12px;line-height:20px;color:#e9eaf4;cursor:pointer;overflow-wrap:anywhere}
+#model-editor .model-option:hover,#model-editor .model-option.highlighted{background:#34234b}
+#model-editor .model-option[aria-selected=true]{font-weight:500}
+#model-editor .model-option-empty{padding:10px;font-size:12px;color:#aab3c7}
+#model-editor #advanced-settings,#model-editor #connection-validation{border-top:1px solid #273441;margin-top:16px;padding-top:12px}
+#model-editor summary{font:400 12px/22px 'Segoe UI','Microsoft YaHei UI',sans-serif;color:#c3b3e6;cursor:pointer}
+#model-editor .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+#model-editor .wide{grid-column:1/-1}
+#model-editor .advanced-key-action{border-top:1px solid #273441;padding-top:10px;margin-top:12px}
+#model-editor #remove-key{font-size:11px;color:#dbbbc5;border-color:#4b3b52;min-height:30px}
+#model-editor .actions{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+#model-editor .save-actions{margin-top:16px}
+#model-editor .save-actions button{height:34px;padding:6px 12px}
+#model-editor .connection-checks{margin:12px 0 0;border:0;padding:0;background:transparent}
+#model-editor .checks-heading h2{display:none}
+#model-editor .check-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #273441}
+#model-editor .check-row>div{min-width:0;flex:1}
+#model-editor .check-row>button{flex:none;white-space:nowrap;font-size:11px}
+#model-editor .check-row h3{margin:0 0 4px;font:500 13px/20px 'Segoe UI','Microsoft YaHei UI',sans-serif;color:#e9eaf4}
+#model-editor .check-result{font-size:11px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;color:#aab3c7;margin-top:7px}
+#model-editor .check-result.error,#model-editor #current-error{color:#ffc1c7}
+#model-editor .check-result.success{color:#aad7ca}
+#model-editor .test-consent{display:flex;align-items:flex-start;gap:7px;font-size:11px;line-height:1.7}
+#model-editor .test-consent input{width:14px;height:14px;flex:none;margin-top:3px;accent-color:#9560ff}
+#model-editor .destination-details{margin-top:12px;padding:0;border:0}
+#model-editor .destination-details summary span{font-size:11px;color:#aab3c7}
+#model-editor .destination-details strong{display:block;font-size:12px;color:#d2daeb;font-weight:400;overflow-wrap:anywhere;margin-top:8px}
+#model-editor #settings-feedback{padding:9px 10px;border-radius:7px;margin:0 0 12px;font-size:12px;color:#bfc8dc;overflow-wrap:anywhere}
+#model-editor #settings-feedback.error{background:#301d28;border:1px solid #654354;color:#ffc1c7}
+#model-editor #settings-feedback.success{background:#132720;border:1px solid #355548;color:#aad7ca}
+#model-editor #settings-feedback:not(.error):not(.success){padding:0;background:transparent;border:0}
+#model-editor #settings-feedback[data-initial-advice=true]{display:none}
+#model-editor #unsaved-guard{position:sticky;bottom:0;padding:12px 16px;border-top:1px solid #574364;background:#1e1929;z-index:25}
+#model-editor #unsaved-guard p{margin:0 0 8px;color:#e1caff;font-size:12px}
+#model-editor #discard-model-edit{color:#dbbbc5;border-color:#715064}
+#model-editor :is(button,a,input,summary):focus-visible,#edit-model:focus-visible{outline:2px solid #c8aff0;outline-offset:3px}
+@media(max-width:560px){.orbital-page #edit-model{padding:8px 13px;gap:7px}#edit-model #current-model{font-size:13px}#model-editor .grid{grid-template-columns:1fr}#model-editor .check-row{flex-direction:column;gap:8px}#model-editor .model-editor-body{padding:12px 14px}#model-editor .model-editor-header{padding:12px 14px}}

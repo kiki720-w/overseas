@@ -1,0 +1,13 @@
+Country data notice — mledoze/world-countries 5.1.0
+
+Contains information from mledoze/world-countries, which is made available here under the Open Database License (ODbL) 1.0.
+Attribution: mledoze and world-countries contributors.
+Upstream project: https://github.com/mledoze/countries
+Exact package: https://registry.npmjs.org/world-countries/-/world-countries-5.1.0.tgz
+License: countries-LICENSE.txt; https://opendatacommons.org/licenses/odbl/1-0/
+Unchanged source database: countries-source.json
+Adapted database: countries.json — made available under ODbL 1.0.
+
+Adaptation: extracts ISO alpha-2 codes, existing Chinese common-name translations, English names, ISO alpha-3/official-name/alternate-spelling aliases, and country latitude/longitude centroids; adds country_focus_only=true; orders China first and a fixed group of common markets before the remaining entries. No new company or city coordinates are introduced. The market ordering is a display preference, not a sales opportunity ranking.
+
+The country database and adapted database are separate reference resources. Customer/company records are not added to this database and are not licensed as country data. The notice does not claim to resolve unrelated database or copyright rights.

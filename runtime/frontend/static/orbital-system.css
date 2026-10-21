@@ -1,0 +1,150 @@
+/* Shared orbital visual tokens; scoped to four workspaces, research remains the approved reference. */
+body.simple-workspace.orbital-workspace{--ws-sidebar:72px;--ws-bg:#02080d;--ws-surface:#0c131c;--ws-text:#f6f7fc;--ws-muted:#aab3c7;--ws-border:#273441;--ws-accent:#a877ff;--orbit-gradient:linear-gradient(105deg,#6040ff,#8151ff 55%,#be71ff);--ws-shadow:0 20px 60px #0006;display:block;background:#02080d url('/assets/orbital/starfield.png') top center/1440px auto repeat-y;color:var(--ws-text);font:14px/1.65 'Segoe UI','Microsoft YaHei UI','Microsoft YaHei',sans-serif;color-scheme:dark}
+body.simple-workspace.orbital-workspace [hidden]{display:none!important}
+body.simple-workspace.orbital-workspace .workspace-sidebar{position:fixed;inset:0 auto 0 0;width:72px;height:100dvh;padding:0;background:#050b10ed;border-right:1px solid #17232e;overflow:visible;z-index:20}
+body.simple-workspace.orbital-workspace .brand{height:68px;width:72px;display:flex;justify-content:center;padding:0}
+body.simple-workspace.orbital-workspace .brand img{width:34px;height:34px;object-fit:contain}
+body.simple-workspace.orbital-workspace .side-caption,body.simple-workspace.orbital-workspace .nav-caption,body.simple-workspace.orbital-workspace .sidebar-compass,body.simple-workspace.orbital-workspace .side-bottom,body.simple-workspace.orbital-workspace .global-banner{display:none}
+body.simple-workspace.orbital-workspace .workspace-sidebar nav{display:flex;flex-direction:column;gap:23px;margin:0;padding:16px 11px}
+body.simple-workspace.orbital-workspace .workspace-sidebar nav a{display:grid;place-items:center;position:relative;padding:0;width:48px;height:48px;border-radius:12px;background:transparent;color:#dbe4f6}
+body.simple-workspace.orbital-workspace .workspace-sidebar nav a img{filter:invert(90%) sepia(11%) saturate(500%) hue-rotate(188deg);width:24px;height:24px}
+body.simple-workspace.orbital-workspace .workspace-sidebar nav a.active{background:#24214f}
+body.simple-workspace.orbital-workspace .workspace-sidebar nav a:hover{background:#242137}
+.orbital-nav-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+body.simple-workspace.orbital-workspace .workspace-main{position:relative;margin-left:72px;width:calc(100% - 72px);max-width:none;padding:0 40px 36px;min-width:0}
+body.simple-workspace.orbital-workspace .orbital-shell-wordmark{display:block;width:fit-content;padding:10px 0 0;margin-left:-18px;color:#fff;font-size:34px;font-weight:650;line-height:1.55;letter-spacing:-1.25px;text-decoration:none}
+body.simple-workspace.orbital-workspace .page-topline{display:flex;margin:27px 0 20px;padding:0 0 14px;border-bottom:1px solid #273441;font-size:12px;color:#aab3c7;letter-spacing:.3px}
+body.simple-workspace.orbital-workspace .breadcrumb,body.simple-workspace.orbital-workspace .breadcrumb strong{color:#aab3c7}
+body.simple-workspace.orbital-workspace .workspace-header{padding:0;margin:0 0 24px;align-items:flex-end;gap:20px}
+body.simple-workspace.orbital-workspace h1,body.simple-workspace.orbital-workspace .workspace-header h1{font-family:inherit;font-size:40px;line-height:1.25;font-weight:650;letter-spacing:-.6px;color:#f6f7fc;margin:0}
+body.simple-workspace.orbital-workspace .workspace-header p{font-size:15px;letter-spacing:0;color:#aab3c7;margin:10px 0 0}
+body.simple-workspace.orbital-workspace h2,body.simple-workspace.orbital-workspace .panel h2,body.simple-workspace.orbital-workspace .client-preview h2{font-family:inherit;font-size:20px;line-height:1.4;letter-spacing:-.2px;font-weight:600;color:#f6f7fc}
+body.simple-workspace.orbital-workspace h3{font-size:16px;font-weight:600;color:#ececff;letter-spacing:0}
+body.simple-workspace.orbital-workspace p,body.simple-workspace.orbital-workspace label{letter-spacing:0}
+body.simple-workspace.orbital-workspace a{color:#b98bff}
+body.simple-workspace.orbital-workspace button,body.simple-workspace.orbital-workspace .button{font:600 13px/1.5 'Segoe UI','Microsoft YaHei UI','Microsoft YaHei',sans-serif;min-height:42px;padding:10px 16px;border:1px solid #9b71ee;border-radius:9px;background:var(--orbit-gradient);color:#fff;letter-spacing:0;box-shadow:none}
+body.simple-workspace.orbital-workspace button.secondary,body.simple-workspace.orbital-workspace .button.secondary,body.simple-workspace.orbital-workspace .icon-button{background:#121b28;border-color:#354257;color:#d8dfef}
+body.simple-workspace.orbital-workspace button:hover:not(:disabled),body.simple-workspace.orbital-workspace .button:hover{filter:brightness(1.13)}
+body.simple-workspace.orbital-workspace button:disabled{opacity:.5;cursor:not-allowed}
+body.simple-workspace.orbital-workspace input:not([type=checkbox]):not([type=radio]),body.simple-workspace.orbital-workspace select,body.simple-workspace.orbital-workspace textarea{min-height:44px;background:#111925;color:#f6f7fc;border:1px solid #3c485e;border-radius:8px;font:14px/1.55 'Segoe UI','Microsoft YaHei UI','Microsoft YaHei',sans-serif;padding:10px 12px;box-shadow:none}
+body.simple-workspace.orbital-workspace input::placeholder,body.simple-workspace.orbital-workspace textarea::placeholder{color:#9ba6bf;opacity:1}
+body.simple-workspace.orbital-workspace input[type=checkbox],body.simple-workspace.orbital-workspace input[type=radio]{accent-color:#9c6aff}
+body.simple-workspace.orbital-workspace :focus-visible{outline:2px solid #ddc3ff;outline-offset:3px}
+body.simple-workspace.orbital-workspace .panel,body.simple-workspace.orbital-workspace .picker-panel,body.simple-workspace.orbital-workspace #empty-state,body.simple-workspace.orbital-workspace .advice-panel,body.simple-workspace.orbital-workspace .connection-panel{background:#0c131ce8;border:1px solid #273441;border-radius:12px;color:#d2daeb;padding:24px;box-shadow:none}
+body.simple-workspace.orbital-workspace .customer-pool{background:transparent;border:0;padding:0 28px 0 0}
+body.simple-workspace.orbital-workspace .customer-layout{gap:0;min-height:0}
+body.simple-workspace.orbital-workspace .client-preview{background:#0c131cd9;border:1px solid #273441;border-radius:12px;padding:24px;min-height:0}
+body.simple-workspace.orbital-workspace .client-preview p,body.simple-workspace.orbital-workspace .preview-fields dt,body.simple-workspace.orbital-workspace .preview-fields span,body.simple-workspace.orbital-workspace .preview-fields label{color:#aab3c7}
+body.simple-workspace.orbital-workspace .preview-tabs{border-color:#273441}
+body.simple-workspace.orbital-workspace .preview-tabs button{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:#aab3c7}
+body.simple-workspace.orbital-workspace .preview-tabs button.active{color:#c39bff;border-bottom-color:#a877ff}
+body.simple-workspace.orbital-workspace .data-table{background:transparent;color:#dbe4f6}
+body.simple-workspace.orbital-workspace .data-table th{background:#111925;color:#aab3c7;border-color:#273441;font-size:12px;font-weight:500}
+body.simple-workspace.orbital-workspace .data-table td{background:transparent;color:#dbe4f6;border-color:#273441;padding-top:20px;padding-bottom:20px}
+body.simple-workspace.orbital-workspace .data-table tr:hover td,body.simple-workspace.orbital-workspace .data-table tr.selected td,body.simple-workspace.orbital-workspace .data-table tr.active td{background:#8954ff12}
+body.simple-workspace.orbital-workspace .record-link,body.simple-workspace.orbital-workspace .company-name{color:#eee8ff;background:none;border:0;min-height:0;padding:0;font-weight:600}
+body.simple-workspace.orbital-workspace .tag,body.simple-workspace.orbital-workspace .badge,body.simple-workspace.orbital-workspace .stage-tag,body.simple-workspace.orbital-workspace .status-chip{background:#212138;color:#d4c6ff;border:1px solid #44415e;border-radius:6px;font-size:12px}
+body.simple-workspace.orbital-workspace .demo-strip,body.simple-workspace.orbital-workspace .note,body.simple-workspace.orbital-workspace .system-info,body.simple-workspace.orbital-workspace footer,body.simple-workspace.orbital-workspace .empty-note,body.simple-workspace.orbital-workspace .filter-count,body.simple-workspace.orbital-workspace .pagination,body.simple-workspace.orbital-workspace .count-label{color:#aab3c7;font-size:12px}
+body.simple-workspace.orbital-workspace .demo-strip{margin:0 0 24px;padding:0;letter-spacing:0}
+body.simple-workspace.orbital-workspace .notice,body.simple-workspace.orbital-workspace .warning{background:#241e31;border-color:#554364;color:#e1caff}
+body.simple-workspace.orbital-workspace .error,body.simple-workspace.orbital-workspace .error-text{color:#ffb9bc}
+body.simple-workspace.orbital-workspace .settings-content,body.simple-workspace.orbital-workspace .factory-settings,body.simple-workspace.orbital-workspace .picker-panel,body.simple-workspace.orbital-workspace #empty-state,body.simple-workspace.orbital-workspace #workspace{margin-left:0;margin-right:0}
+body.simple-workspace.orbital-workspace .settings-content{max-width:860px}
+body.simple-workspace.orbital-workspace .deal-layout{gap:24px}
+body.simple-workspace.orbital-workspace .evidence-grid>div,body.simple-workspace.orbital-workspace .advice-block,body.simple-workspace.orbital-workspace .draft,body.simple-workspace.orbital-workspace .history-entry,body.simple-workspace.orbital-workspace .timeline-item,body.simple-workspace.orbital-workspace .source-card,body.simple-workspace.orbital-workspace .library-empty,body.simple-workspace.orbital-workspace .source-detail,body.simple-workspace.orbital-workspace .file-zone,body.simple-workspace.orbital-workspace .extra-filters,body.simple-workspace.orbital-workspace .model-options{background:#111925;color:#d2daeb;border-color:#354257;box-shadow:none}
+body.simple-workspace.orbital-workspace .source-card:hover,body.simple-workspace.orbital-workspace .model-option:hover,body.simple-workspace.orbital-workspace .model-option[aria-selected=true]{background:#24213a}
+body.simple-workspace.orbital-workspace .model-option{background:#111925;color:#dbe4f6;border-color:#354257}
+body.simple-workspace.orbital-workspace .model-option small,body.simple-workspace.orbital-workspace .model-option span{color:#b0bbd1}
+body.simple-workspace.orbital-workspace .setup-step,body.simple-workspace.orbital-workspace .key-step,body.simple-workspace.orbital-workspace details,body.simple-workspace.orbital-workspace .connection-checks,body.simple-workspace.orbital-workspace .section-title,body.simple-workspace.orbital-workspace .drawer-section-title{border-color:#273441;color:#aab3c7}
+body.simple-workspace.orbital-workspace .library-tabs{border-color:#273441}
+body.simple-workspace.orbital-workspace .library-tabs button{background:transparent;border:0;border-bottom:2px solid transparent;border-radius:0;color:#aab3c7}
+body.simple-workspace.orbital-workspace .library-tabs button[aria-selected=true]{color:#c39bff;border-bottom-color:#a877ff}
+body.simple-workspace.orbital-workspace dialog{background:#0c131c;color:#dbe4f6;border:1px solid #354257;border-radius:12px}
+body.simple-workspace.orbital-workspace dialog::backdrop{background:#000a;backdrop-filter:blur(5px)}
+body.simple-workspace.orbital-workspace .drawer-header,body.simple-workspace.orbital-workspace .drawer-body{background:#0c131c;color:#dbe4f6;border-color:#354257}
+body.simple-workspace.orbital-workspace footer{margin:28px 0 0;border-top:1px solid #273441;padding-top:16px}
+@media(max-width:800px){body.simple-workspace.orbital-workspace{--ws-sidebar:54px}body.simple-workspace.orbital-workspace .workspace-sidebar{width:54px;height:100dvh;position:fixed;padding:0}body.simple-workspace.orbital-workspace .brand{width:54px}body.simple-workspace.orbital-workspace .brand img{width:30px;height:30px}body.simple-workspace.orbital-workspace .workspace-sidebar nav{padding:16px 5px;gap:23px;flex-wrap:nowrap;margin:0}body.simple-workspace.orbital-workspace .workspace-sidebar nav a{width:44px;height:48px}body.simple-workspace.orbital-workspace .workspace-main{margin-left:54px;width:calc(100% - 54px);padding:0 20px 24px}body.simple-workspace.orbital-workspace .orbital-shell-wordmark{font-size:29px;margin-left:0}body.simple-workspace.orbital-workspace .page-topline{margin-top:24px}body.simple-workspace.orbital-workspace .workspace-header{flex-direction:column;align-items:flex-start;padding:0;gap:16px}body.simple-workspace.orbital-workspace .workspace-header h1{font-size:32px}body.simple-workspace.orbital-workspace .workspace-header p{font-size:14px}body.simple-workspace.orbital-workspace .workspace-header>.actions{width:100%;flex-wrap:wrap;margin:0}body.simple-workspace.orbital-workspace .panel{padding:18px}body.simple-workspace.orbital-workspace .customer-pool{padding:0}body.simple-workspace.orbital-workspace .customer-layout,body.simple-workspace.orbital-workspace .deal-layout{grid-template-columns:1fr;gap:24px}body.simple-workspace.orbital-workspace .client-preview{padding:18px}body.simple-workspace.orbital-workspace .settings-content,body.simple-workspace.orbital-workspace .factory-settings,body.simple-workspace.orbital-workspace .picker-panel,body.simple-workspace.orbital-workspace #empty-state,body.simple-workspace.orbital-workspace #workspace{margin-left:0;margin-right:0}body.simple-workspace.orbital-workspace .customer-picker,body.simple-workspace.orbital-workspace .grid{grid-template-columns:1fr}body.simple-workspace.orbital-workspace .library-toolbar{flex-wrap:wrap}body.simple-workspace.orbital-workspace .extra-filters{width:100%;max-width:100%}body.simple-workspace.orbital-workspace .filters #search{width:100%;min-width:0}body.simple-workspace.orbital-workspace .model-options{max-width:100%}body.simple-workspace.orbital-workspace footer{margin-left:0;margin-right:0}}
+@media(prefers-reduced-motion:reduce){body.simple-workspace.orbital-workspace *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* Explicit overrides for the published typography sheet's !important rules. */
+body.simple-workspace.orbital-workspace{min-height:100vh}
+body.simple-workspace.orbital-workspace .nav-caption{display:none!important}
+body.simple-workspace.orbital-workspace .workspace-sidebar nav a{border-left:0;justify-content:center}
+body.simple-workspace.orbital-workspace .workspace-header h1{font:650 40px/1.25 var(--overseas-font)!important;letter-spacing:-.6px!important}
+body.simple-workspace.orbital-workspace main h2,body.simple-workspace.orbital-workspace main .section-title h2{font:600 20px/1.4 var(--overseas-font)!important;color:#f6f7fc}
+body.simple-workspace.orbital-workspace main h3{font:600 16px/1.5 var(--overseas-font)!important;color:#ececff}
+body.simple-workspace.orbital-workspace main p,body.simple-workspace.orbital-workspace main label,body.simple-workspace.orbital-workspace main .muted,body.simple-workspace.orbital-workspace .preview-fields dd{color:#aab3c7}
+body.simple-workspace.orbital-workspace .workspace-header p{font:400 15px/1.7 var(--overseas-font)!important;color:#aab3c7}
+body.simple-workspace.orbital-workspace main button:not(.secondary):not(.company-name):not(.model-option):not([role=tab]):not(.source-title):not(.document-title),body.simple-workspace.orbital-workspace main a.button:not(.secondary){background:var(--orbit-gradient);color:#fff;border-color:#9b71ee}
+body.simple-workspace.orbital-workspace main button.secondary,body.simple-workspace.orbital-workspace main a.button.secondary{background:#121b28;border-color:#354257;color:#d8dfef}
+body.simple-workspace.orbital-workspace main .data-table button.company-name{font:600 14px/24px var(--overseas-font)!important;color:#eee8ff!important}
+body.simple-workspace.orbital-workspace main .data-table button.company-name:hover{color:#cfaaff!important}
+body.simple-workspace.orbital-workspace main .data-table tr.preview-selected,body.simple-workspace.orbital-workspace main .data-table tr[data-row]:has(input:checked),body.simple-workspace.orbital-workspace main .data-table tbody tr:hover{background:#8954ff12}
+body.simple-workspace.orbital-workspace main .data-table tr.preview-selected td{border-color:#463759}
+body.simple-workspace.orbital-workspace .tag[data-stage]{background:#212138;color:#d4c6ff}
+body.simple-workspace.orbital-workspace .more-filters>summary,body.simple-workspace.orbital-workspace .settings-feedback,body.simple-workspace.orbital-workspace .knowledge-picker{background:#111925;color:#d2daeb;border-color:#354257}
+body.simple-workspace.orbital-workspace .step-heading>span:first-child{background:#212138;color:#d4c6ff;border-color:#44415e}
+body.simple-workspace.orbital-workspace .preview-tabs strong{color:#c39bff}
+body.simple-workspace.orbital-workspace .preview-fields>div{border-color:#273441}
+body.simple-workspace.orbital-workspace .knowledge-main{margin-left:72px;padding:0 40px 36px}
+body.simple-workspace.orbital-workspace .knowledge-main .page-content{padding:0;max-width:none}
+body.simple-workspace.orbital-workspace.knowledge-page .knowledge-main .library-tabs button{color:#aab3c7!important}
+body.simple-workspace.orbital-workspace.knowledge-page .knowledge-main .library-tabs button[aria-selected=true]{color:#c39bff!important;border-bottom-color:#a877ff!important}
+body.simple-workspace.orbital-workspace.knowledge-page .knowledge-main button.source-title,body.simple-workspace.orbital-workspace.knowledge-page .knowledge-main button.document-title{color:#e0d1ff!important}
+body.simple-workspace.orbital-workspace .model-option.highlighted{background:#24213a}
+body.simple-workspace.orbital-workspace select option,body.simple-workspace.orbital-workspace select optgroup{background:#151c29;color:#f6f7fc}
+body.simple-workspace.orbital-workspace select:disabled{background:#101722;color:#aab3c7;opacity:.65;cursor:not-allowed}
+body.simple-workspace.orbital-workspace .skip-link{background:#6040ff;color:#fff}
+@media(max-width:800px){body.simple-workspace.orbital-workspace .knowledge-main{margin-left:54px;padding:0 20px 24px}body.simple-workspace.orbital-workspace .workspace-header h1{font-size:32px!important}body.simple-workspace.orbital-workspace .workspace-header p{font-size:14px!important}}
+body.simple-workspace.orbital-workspace main .preview-tabs .text-link{background:transparent;border:0;color:#c39bff;min-height:0;padding:0;font-weight:400}
+body.simple-workspace.orbital-workspace main .row-action{background: url('/assets/orbital/icon-chevron-down.svg') center/20px no-repeat;filter:brightness(0) invert(1);transform:rotate(-90deg)}
+body.simple-workspace.orbital-workspace.deals-page main h2{color:#f6f7fc}
+body.simple-workspace.orbital-workspace .knowledge-picker pre,body.simple-workspace.orbital-workspace pre{background:#151c29;color:#d2daeb;border-color:#354257}
+body.simple-workspace.orbital-workspace .upload-zone,body.simple-workspace.orbital-workspace .import-flow li,body.simple-workspace.orbital-workspace .check-row,body.simple-workspace.orbital-workspace .stage-track li{background:#111925;color:#c5cee0;border-color:#354257}
+body.simple-workspace.orbital-workspace .deal-rag,body.simple-workspace.orbital-workspace .import-limits,body.simple-workspace.orbital-workspace .model-consent,body.simple-workspace.orbital-workspace .rag-source,body.simple-workspace.orbital-workspace .save-feedback{background:#111925;color:#d2daeb;border-color:#354257}
+body.simple-workspace.orbital-workspace .deal-rag summary,body.simple-workspace.orbital-workspace .deal-rag h3{color:#d8c3ff}
+body.simple-workspace.orbital-workspace .customer-heading-copy h2{color:#f6f7fc}
+body.simple-workspace.orbital-workspace .toast{background:#242138;color:#f6f7fc;border-color:#69518b}
+body.simple-workspace.orbital-workspace main .customer-heading-copy h2{color:#f6f7fc!important}
+body.simple-workspace.orbital-workspace select option:checked{background:#463065;color:#fff}
+body.simple-workspace.orbital-workspace main .preview-tabs button{background:transparent!important;border:0!important;color:#c39bff!important;min-height:0!important;padding:0!important;font-weight:400!important}
+
+/* Progressive same-origin document transition; native navigation and unload guards remain intact. */
+@view-transition{navigation:none}
+::view-transition-old(root){animation:orbit-document-out 100ms ease-out both}
+::view-transition-new(root){animation:orbit-document-in 140ms ease-out both}
+@keyframes orbit-document-out{to{opacity:0}}
+@keyframes orbit-document-in{from{opacity:0}}
+@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}::view-transition-old(root),::view-transition-new(root){animation:none}}
+
+/* Customer selection toolbar: override retained light workspace rules only here. */
+body.simple-workspace.orbital-workspace.customer-page .bulkbar {
+  background: #171426;
+  border-color: #463759;
+  color: #eee8ff;
+  gap: 8px;
+  align-items: center;
+}
+body.simple-workspace.orbital-workspace.customer-page .bulkbar #selection-count {
+  color: #d4c6ee;
+  font: 400 14px/20px var(--overseas-font);
+  margin-bottom: 0;
+}
+body.simple-workspace.orbital-workspace.customer-page .bulkbar button.secondary,
+body.simple-workspace.orbital-workspace.customer-page .bulkbar select {
+  height: 44px;
+  min-height: 44px;
+  padding: 10px 12px;
+  font: 500 14px/20px var(--overseas-font) !important;
+  background-color: #211b32;
+  border-color: #514165;
+  color: #eee8ff;
+}
+body.simple-workspace.orbital-workspace.customer-page .bulkbar button.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+body.simple-workspace.orbital-workspace.customer-page .data-table input[type=checkbox] {
+  display: block;
+  margin: 0;
+}

@@ -96,7 +96,7 @@ class HistoryTests(unittest.TestCase):
     def test_prompt_progressive_first_email_and_scene_specific_interface(self):
         self.service.analyze(self.c['id'],self.data('development'))
         prompt=self.stub.calls[-1]['payload']['messages'][0]['content']
-        for required in ('80至160','最多三个','工作台/夹具安装','不能默认索要主轴','不要求客户完成工程设计','下一轮','不能虚构能力','客户开发'):self.assertIn(required,prompt)
+        for required in ('80至160','只确认合适联系人','工作台/夹具安装','不能默认索要主轴','不要求客户完成工程设计','下一轮','不能虚构能力','客户开发'):self.assertIn(required,prompt)
 
     def test_unfinished_request_survives_restart_without_auto_retry(self):
         self.store.analysis_begin(self.c['id'],self.data(),dict(provider='deepseek',model='synthetic',revision=1),'model')

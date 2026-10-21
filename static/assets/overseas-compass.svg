@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="328 245 604 604" role="img"><title>Overseas precision compass</title><desc>Hand-drawn vector approximation of the selected Overseas Precision Compass concept. Transparent background. Paths only; no embedded raster artwork.</desc><defs>
+  <linearGradient id="violet" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#326b72"/><stop offset="1" stop-color="#4d8b90"/></linearGradient>
+  <linearGradient id="lavender" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#88b8af"/><stop offset="1" stop-color="#a7cfc1"/></linearGradient>
+  <linearGradient id="needle-front" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#79b0aa"/><stop offset="1" stop-color="#d4e5d9"/></linearGradient>
+  <linearGradient id="needle-back" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#143541"/><stop offset="1" stop-color="#326b72"/></linearGradient>
+</defs><g aria-label="Precision compass">
+  <path fill="url(#violet)" d="M558 307H728V382Q728 387 723 387H592L463 515V682L456 690L378 617V485Z"/>
+  <path fill="url(#lavender)" d="M810 470H881V619L711 786H559L508 738L545 707H680L802 587V479Z"/>
+  <path fill="url(#needle-back)" d="M592 490L694 565L447 745L587 496Z"/>
+  <path fill="url(#needle-front)" d="M882 322L710 554L694 565L592 490Z"/>
+</g></svg>

@@ -7,19 +7,29 @@ import datetime as dt
 from .common import *
 from .analysis_history import AnalysisHistory
 from .knowledge import KnowledgeStore
+from .website import WebsiteStore
+from .discovery import DiscoveryStore
 
 def read_customer(raw):
     c=json.loads(raw);c.setdefault('version',0)
     for k in ['website','email','contact_name']:c.setdefault(k,'')
     return c
 def indexed(c):return (norm(c['name']),c['type'],c['stage'],norm(c.get('country','')),int(c['priority']),norm(c['name']+' '+c.get('country','')+' '+c.get('product','')+' '+c.get('website','')+' '+c.get('email','')),c['version'])
-class Store(AnalysisHistory,KnowledgeStore):
-    def __init__(self,path,demo):
-        self.path=Path(path);self.path.parent.mkdir(parents=True,exist_ok=True)
+class ClosingConnection(sqlite3.Connection):
+    """Preserve DB-API transactions and raw access; close after each with block."""
+    def __exit__(self,*args):
+        try:return super().__exit__(*args)
+        finally:self.close()
+
+class Store(AnalysisHistory,KnowledgeStore,WebsiteStore,DiscoveryStore):
+    def __init__(self,path,demo,factory_defaults=None):
+        self.path=Path(path);self.is_new_workspace=not self.path.exists();self.path.parent.mkdir(parents=True,exist_ok=True)
         with self.db() as db:
             db.execute('PRAGMA journal_mode=WAL')
             self.init_history(db)
             self.init_knowledge(db)
+            self.init_website(db)
+            self.init_discovery(db)
             db.executescript('CREATE TABLE IF NOT EXISTS config(id INTEGER PRIMARY KEY,data TEXT);CREATE TABLE IF NOT EXISTS customers(id TEXT PRIMARY KEY,data TEXT);CREATE TABLE IF NOT EXISTS records(id TEXT PRIMARY KEY,customer_id TEXT,data TEXT);CREATE INDEX IF NOT EXISTS records_customer ON records(customer_id);CREATE TABLE IF NOT EXISTS calls(id TEXT PRIMARY KEY,data TEXT);')
             db.execute('CREATE TABLE IF NOT EXISTS import_receipts(id TEXT PRIMARY KEY,data TEXT)')
             columns={r[1] for r in db.execute('PRAGMA table_info(customers)')}
@@ -29,13 +39,13 @@ class Store(AnalysisHistory,KnowledgeStore):
                 c=read_customer(raw);db.execute('UPDATE customers SET name_key=?,type_key=?,stage_key=?,country_key=?,priority_key=?,search_text=?,version_key=? WHERE id=?',indexed(c)+(cid,))
             db.executescript('CREATE INDEX IF NOT EXISTS customers_filters ON customers(type_key,stage_key,country_key,priority_key);CREATE INDEX IF NOT EXISTS customers_name ON customers(name_key,country_key);')
             if not db.execute('SELECT 1 FROM config').fetchone():
-                db.execute('INSERT INTO config VALUES(1,?)',(dump({'name':'示例机械制造工厂','products':'','capabilities':'待填写可核实的精度、材料、设备及产能','countries':'','focus':''}),))
+                db.execute('INSERT INTO config VALUES(1,?)',(dump(factory_defaults or {'name':'虚构示例精密制造工厂','products':'卡盘、齿轮夹具、CNC 夹具','capabilities':'待填写可核实的精度、材料、设备及产能','countries':'','focus':''}),))
                 if demo:
                     for i,(typ,product) in enumerate(zip(TYPES,['CNC 夹具','卡盘','齿轮夹具'])):
                         c=customer_data({'name':f'演示 · {chr(65+i)} 工业公司','type':typ,'stage':'待开发','product':product,'country':'未知','source':'虚构演示，未进行外部核验','source_date':dt.date.today().isoformat(),'facts':'无已核实公司及采购事实','hypotheses':'可能有工装应用场景，需核实','unknowns':'联系人、采购计划、规格及预算均未知','signals':'无已确认需求信号'})
                         c.update(id=secrets.token_hex(8),demo=True,version=1,updated_at=now());self.insert(db,c)
     def db(self):
-        db=sqlite3.connect(self.path,timeout=15);db.execute('PRAGMA busy_timeout=15000');return db
+        db=sqlite3.connect(self.path,timeout=15,factory=ClosingConnection);db.execute('PRAGMA busy_timeout=15000');return db
     def insert(self,db,c):db.execute('INSERT INTO customers(id,data,name_key,type_key,stage_key,country_key,priority_key,search_text,version_key) VALUES(?,?,?,?,?,?,?,?,?)',(c['id'],dump(c))+indexed(c))
     def factory(self):
         with self.db() as db:return json.loads(db.execute('SELECT data FROM config WHERE id=1').fetchone()[0])
